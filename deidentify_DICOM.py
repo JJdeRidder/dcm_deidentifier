@@ -65,7 +65,7 @@ known_UIDS = {}
 
 def deidentifier(src_path, newptID):
     ds = pydicom.dcmread(src_path) ## defer_size could improve performance
-    ds.remove_private_tags()  # this will get rid of all private tags, this will cause some loss of information (aka, mevisLab comments orso) but this is inevitable for good de-identification
+    ds.remove_private_tags()  # this will get rid of all private tags, this will cause some loss of information but this is inevitable for good de-identification
     
     if (0x40, 0x275) in ds:
         del ds[(0x40, 0x275)]  # ugly way to get arround key error of (0x40,0x275)
@@ -87,7 +87,7 @@ def deidentifier(src_path, newptID):
 
             # gets the dummie values from VR_dummies by VR
             else:
-                row.value = VR_dummies[row.VR]  # oneline wonders
+                row.value = VR_dummies[row.VR]
 
         # if tag of data_elem is in U_list a new UID needs to be created, keeping the internal consistency
         elif row.tag in Tag_dict["U_list"]:
@@ -119,3 +119,6 @@ def deidentifier(src_path, newptID):
     
     
     return ds
+
+d = deidentifier(r"C:\test.dcm", "Patient0")
+d.save_as("C:\deidentified_test.dcm")
