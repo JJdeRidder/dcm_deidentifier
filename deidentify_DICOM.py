@@ -24,7 +24,7 @@ Tag_dict = {
 }
 
 # Creating a dict with all tags according to the NEMA Standard (http://dicom.nema.org/dicom/2013/output/chtml/part15/chapter_E.html
-# DICOMstandard.csv is the same as Appendix 2. 
+# current version of DICOMstandard.csv does not include removing SeriesDescription and ImagComments since this contains info about insp or exp
 
 with open("DICOMstandard.csv", "r") as csvf:
     reader = csv.reader(csvf)
