@@ -1,5 +1,5 @@
 # dcm_deidentifier
-Basic concept for anonymizing DICOM files using Python and pydicom.
+Basic concept for deidentifying DICOM files using Python and pydicom.
 
 
 I am not a seasoned python expert, but I figured that my work could come in useful for someone else.
